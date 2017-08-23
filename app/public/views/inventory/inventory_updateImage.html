@@ -1,0 +1,102 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add A Car</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Update car image
+    <small></small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+
+    <div class="row" data-ng-controller="InventoryController">
+      <div class="portlet light bordered">
+        <div class="portlet-title">
+          <div class="caption font-dark">
+              <i class="icon-briefcase font-dark"></i>
+              <span class="caption-subject">Select an image of resolution 500 X 350</span>
+          </div>
+        </div>
+        <div class="portlet-body form">
+
+                <!-- /.box-header -->
+
+                  <div class="row">
+    <form id="frmUploader" enctype="multipart/form-data" action="inventoryImgUpdate" method="post">
+       <div class="col-md-6">
+                      <div class="form-group">
+                         
+                            <input type="hidden" placeholder="Enter value: {{carId}}" class="form-control" id="carId" name="carId" value="{{carId}}">
+                          </div>
+           
+
+                   <div class="form-group">
+                      <label for="image">Image</label>
+                      <input type="file" name="imgUploader"/>
+                    </div>
+                      <div>
+                                 
+                         <input type="submit" class="btn btn-primary" name="submit" id="btnSubmit" value="Submit" />
+                      </div>
+       </div>
+
+    </form>
+ </div>
+
+                     <!-- <div class="col-md-6">
+                        <div class="form-group">
+                          <label style="margin-left: 1%;">Features</label>
+                          <div class="col-md-12" style="margin-top:5px;">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select0" name="my_multi_select0[]" ng-model="my_multi_select0">
+                              <option>ABS</option>
+                              <option>Bluetooth</option>
+                              <option selected>High Fuel Efficiency</option>
+                              <option selected>Bluetooth</option>
+                              <option>Navigation</option>
+                              <option>Sunroof</option>
+                              <option>4WD</option>
+                              <option>AWD</option>
+                              <option selected>Stereo System</option>
+                              <option>USB</option>
+                              <option>Leather Seats</option>
+                              <option>A/C</option>
+                              <option>Heated Seats</option>
+                              <option>Cooler</option>
+                              <option>Cup Holders</option>
+                              <option>AVS/PVS</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        
+                      </div>-->
+                        <!-- /.col -->
+                      
+                    </form>
+                  </div>
+                  <!-- /.row -->
+
+                <!-- /.box-body -->
+   
+
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+  
+    </script>

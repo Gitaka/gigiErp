@@ -1,0 +1,106 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="datatablesmanaged">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="datatablesmanaged">View All Makes</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">View All Sold Cars
+    <small>all sold cars in your inventory</small>
+</h3>
+                    <div class="row" style="padding-bottom: 2%">
+                        
+                        <div class="col-md-2">
+                          <div class="btn-group">
+                            <a ui-sref="inventoryadd">
+                                <button id="sample_editable_1_new" class="btn sbold blue"> Add Cars
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                   <div class="col-md-3" style="padding-left:30px;">
+                          <div class="btn-group">
+                            <a ui-sref="inventoryavailablemakes">
+                                <button id="sample_editable_1_new" class="btn sbold yellow"> Available Cars
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" style="padding-left:21px;">
+                          <div class="btn-group">
+                            <a ui-sref="soldcar">
+                                <button id="sample_editable_1_new" class="btn sbold white">Sold Cars
+                                
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="padding-left:0px;">
+                          <div class="btn-group">
+                            <a ui-sref="reservecar">
+                                <button id="sample_editable_1_new" class="btn sbold green">Reserved Cars</button>
+                            </a>
+                            </div>
+                        </div>
+                      <div class="col-md-2">
+                          <div class="btn-group">
+                            <a ui-sref="inventorycollectedmakes">
+                                <button id="sample_editable_1_new" class="btn sbold orange">Collected</button>
+                            </a>
+                            </div>
+                        </div>
+
+                    </div>
+<div class="row" data-ng-controller="InventoryController">
+    <div class="col-md-3">
+      <div style="background: #fff;padding:2px">
+         <ul style="list-style: none">
+           <li style="padding:5px;color:#2b3643" ng-repeat="make in makes" ng-click="getBySold(make.id,'sold')">
+           <a href="#" style="text-decoration: none">{{make.make}}</a></li>
+         </ul>
+
+      </div>
+           
+    </div>
+
+    <div class="col-md-9">
+      
+          <div class="col-md-4" ng-repeat="inv in soldmakes">
+              <!-- Box Comment -->
+              <div class="box box-widget">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <span class="username"> <a ng-href="/#/inventorysinglecar" ng-click="goToStatus(inv.ID)">{{inv.post_name}}</a></span>
+                    <span class="description"><button class="btn btn-danger btn-sm">{{inv.status}}</button</span>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <a ng-href="/#/inventorysinglecar" ng-click="goToStatus(inv.ID)" class="hov">
+                  <div class="box-body">
+                    <img class="img-responsive pad" src="../../uploads/{{inv.imgUrl}}" alt="Photo">
+                  </div>
+                </a>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS

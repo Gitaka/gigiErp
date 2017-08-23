@@ -1,0 +1,102 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="datatablesmanaged">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="datatablesmanaged">View All Makes</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">{{suppName}}'s' Inventory
+    <small>All  cars</small>
+</h3>
+
+                    <div class="row" style="padding-bottom: 2%">
+                        
+                         <div class="col-md-3" style="padding-left:30px;">
+                          <div class="btn-group">
+                            <a ui-sref="supplierlandingpage">
+                                <button id="sample_editable_1_new" class="btn sbold white">Suppliers
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2" style="padding-left:0px;">
+                          <div class="btn-group">
+                            <a ui-sref="suppliersadd">
+                                <button id="sample_editable_1_new" class="btn sbold green">Add Suppliers</button>
+                            </a>
+                            </div>
+                        </div>
+                           <!-- <div class="col-md-2">
+                          <div class="btn-group">
+                            <a ui-sref="#">
+                                <button id="sample_editable_1_new" class="btn sbold orange">Cars Supplied By GiGi</button>
+                            </a>
+                            </div>
+                        </div>-->
+
+                    </div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="SuppliersController">
+    <div class="col-md-3">
+      <div style="background: #fff;padding:2px">
+
+         <ul style="list-style: none">
+         <div class="btn-group" style="padding-top:2%;">
+                            <a ui-sref="#">
+                                <button id="sample_editable_1_new" class="btn sbold red"> All Cars
+                                </button>
+                            </a>
+                            </div>
+
+           <li style="padding:5px;color:#2b3643" ng-repeat="make in makes" ng-click="getMakeess(make.id,make.make)">
+           <a href="#" style="text-decoration: none">{{make.make}}</a></li>
+         </ul>
+
+      </div>
+           
+    </div>
+
+    <div class="col-md-9">
+          <div ng-show="isObjectEmpty(suppInventory)">
+              <h2 style="color:red">No cars available posted by {{suppName}}.</h2>
+            </div>
+          <div class="col-md-4" ng-repeat="inv in suppInventory">
+              <!-- Box Comment -->
+              <div class="box box-widget">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <span class="username"> <a ng-href="/#/inventorysinglecar" ng-click="go(inv.ID)">{{inv.post_name}}</a></span>
+                    <span class="description"><button class="btn btn-danger btn-sm">{{inv.status}}</button></span>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <a ng-href="/#/inventorysinglecar" ng-click="go(inv.ID)" class="hov">
+                  <div class="box-body">
+                    <img class="img-responsive pad" src="../../uploads/{{inv.imgUrl}}" alt="Photo">
+                  </div>
+                </a>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS

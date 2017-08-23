@@ -1,0 +1,65 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="inventoryallmakes">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="inventorysinglemake">View Single Make</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">View all sold Cars
+    
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="InventoryController">
+    <div class="col-md-3">
+      <div style="background: #fff;padding:2px">
+         <ul style="list-style: none">
+           <li style="padding:5px;color:#2b3643" ng-repeat="make in makes" ng-click="getBySold(make.id,'sold',make.make)">
+           <a href="#" style="text-decoration: none">{{make.make}}</a></li>
+         </ul>
+
+      </div>
+           
+    </div>
+
+    <div class="col-md-9">
+      
+            <div class="col-md-4" ng-repeat="inv in statusInventory">
+              <!-- Box Comment -->
+              <div class="box box-widget">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <span class="username"> <a ng-href="/#/inventorysinglecar" ng-click="goToStatus(inv.ID)">{{inv.post_name}}</a></span>
+                    <span class="description"><button class="btn btn-danger btn-sm">{{inv.status}}</button</span>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <a ng-href="/#/inventorysinglecar" ng-click="goToStatus(inv.ID)" class="hov">
+                  <div class="box-body">
+                    <img class="img-responsive pad" src="../../uploads/{{inv.imgUrl}}" alt="Photo">
+                  </div>
+                </a>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+
+</script>
+<!-- END MAIN JS

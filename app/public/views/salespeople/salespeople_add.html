@@ -1,0 +1,185 @@
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Salespeople</span>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Add Salespeople</span>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+    <!-- BEGIN PAGE TITLE-->
+    <h1 class="page-title"> Add Salespeople
+        <small>add new salespeople</small>
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row" data-ng-controller="SalespeopleController">
+        <div class="col-md-12">
+            <div class="tabbable-line boxless tabbable-reversed">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-plus"></i> </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <!-- BEGIN FORM-->
+                        <form role="form" class="form-horizontal" ng-submit="addUsers()">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Name</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Enter Name" required 
+                                             id="name" name="name" ng-model="name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">ID Number</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="ID Number" required 
+                                            id="idNo" name="idNo" ng-model="idNo"> </div>
+                                    </div>
+                                </div>   
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Employee ID</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Employee ID " required 
+                                            id="empId" name="empId" ng-model="empId"> </div>
+                                    </div>
+                                </div>  
+
+
+                                    <div class="form-group">
+                                    <label class="col-md-3 control-label">Manager</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Manager" required 
+                                            id="manager" name="manager" ng-model="manager"> </div>
+                                    </div>
+                                </div>  
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Date of Birth</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Date of Birth" required 
+                                            id="dob" name="dob" ng-model="dob"> </div>
+                                    </div>
+                                </div>   
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Hire Date</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Hire Date" required 
+                                            id="hireDate" name="hireDate" ng-model="hireDate"> </div>
+                                    </div>
+                                </div>                      
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Email Address</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input type="email" class="form-control input-circle-right" placeholder="Email Address" required 
+                                            id="email" name="email" ng-model="email"> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">PhoneNo</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Phone number" required 
+                                             id="phoneNo" name="phoneNo" ng-model="phoneNo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Location</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <input type="text" class="form-control input-circle-right" placeholder="Enter Location" required 
+                                             id="location" name="location" ng-model="location">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+                                            <input type="password" class="form-control input-circle-right" placeholder="Password" required 
+                                            id="password" name="password" ng-model="password"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Designation</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon input-circle-left">
+                                                <i class="fa fa-users"></i>
+                                            </span>
+                                            <input type="user_role" class="form-control input-circle-right" placeholder="Designation" required 
+                                            id="role" name="role" ng-model="role">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END FORM-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

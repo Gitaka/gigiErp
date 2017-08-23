@@ -1,0 +1,242 @@
+<div class="page-sidebar navbar-collapse collapse">
+    <!-- BEGIN SIDEBAR MENU -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+        <li class="sidebar-search-wrapper">
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+            <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+            <form class="sidebar-search sidebar-search-bordered" action="#" method="POST">
+                <a href="javascript:;" class="remove">
+                    <i class="icon-close"></i>
+                </a>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <a href="javascript:;" class="btn submit">
+                            <i class="icon-magnifier"></i>
+                        </a>
+                    </span>
+                </div>
+            </form>
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        </li>
+        <li class="start nav-item">
+            <a ui-sref="dashboard">
+                <i class="icon-home"></i>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+        <li class="heading">
+            <h3 class="uppercase">Manage</h3>
+        </li>
+       <li class="nav-item">
+          <a ui-sref="inventoryallmakes">
+                        <i class="icon-wallet"></i>Inventory</span>
+           </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Inventory Management</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="inventoryallmakes">
+                        <i class="icon-grid"></i> View All Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="inventoryavailablemakes">
+                        <i class="icon-grid"></i>Available Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="inventorycollectedmakes">
+                        <i class="icon-grid"></i>Collected Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="reservecar">
+                        <i class="icon-grid"></i>Reserved Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="soldcar">
+                        <i class="icon-grid"></i>Sold Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="inventoryadd">
+                        <i class="icon-plus"></i> Add A Car</span>
+                    </a>
+                </li>
+ 
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="icon-bulb"></i>
+                <span class="title">Enquiries</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="enquiriesview">
+                        <i class="icon-bulb"></i> View All Enquiries</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="enquiriesadd">
+                        <i class="icon-plus"></i> Add An Enquiry</span>
+                    </a>
+                </li>
+
+    
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="fa fa-plane"></i>
+                <span class="title">Imports</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="importsview">
+                        <i class="fa fa-plane"></i> View Imports</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="importsadd">
+                        <i class="fa fa-rocket"></i> Add An Import</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="importsmanage">
+                        <i class="icon-settings"></i> Manage Imports</span>
+                    </a>
+                </li>
+ 
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Importers</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="importersview">
+                        <i class="icon-puzzle"></i> View All Importers</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="importersadd">
+                        <i class="icon-paper-clip"></i> Add Importers</span>
+                    </a>
+                </li>
+   
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-briefcase"></i>
+                <span class="title">Suppliers</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                <a ui-sref="supplierlandingpage">
+                        <i class="icon-puzzle"></i> View All Suppliers </a>
+                    <!--<a ui-sref="suppliersview">
+                        <i class="icon-puzzle"></i> View All Suppliers </a>-->
+                </li>
+                <li>
+                    <a ui-sref="suppliersadd">
+                        <i class="icon-calendar"></i> Add Suppliers </a>
+                </li>
+                <li>
+                    <a ui-sref="suppliersmanage">
+                        <i class="icon-refresh"></i>Suppliers Inventory</a>
+                </li>
+                <!--<li>
+                    <a ui-sref="suppliersinventoryadd">
+                        <i class="icon-calendar"></i>Add Suppliers Inventory</a>
+                </li>-->
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="http://95.85.10.198/login" id="sidebar_menu_link_profile">
+                <i class="icon-wallet"></i>
+                <span class="title">Finance</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="icon-users"></i>
+                <span class="title">Salespeople</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="salespeopleview">
+                        <i class="icon-puzzle"></i> View All Salespeople</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="salespeopleadd">
+                        <i class="icon-paper-clip"></i> Add Salespeople</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Customers</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="customersview">
+                        <i class="icon-puzzle"></i> View All Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="customersadd">
+                        <i class="icon-paper-clip"></i> Add Customers</span>
+                    </a>
+                </li>
+   
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="todo">
+                <i class="icon-bar-chart"></i>
+                <span class="title">Projects</span>
+            </a>
+        </li>
+         <li class="heading">
+            <h3 class="uppercase">Settings</h3>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="blank">
+                <i class="icon-refresh"></i>
+                <span class="title">Blank Page</span>
+            </a>
+        </li>
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>

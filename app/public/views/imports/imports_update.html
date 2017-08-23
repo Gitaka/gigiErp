@@ -1,0 +1,106 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Imports</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="importsadd">Update Imports</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Update An Import
+    <small>update import requests</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="ImportsController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Update import{{imports_Id}}</span>
+                </div>
+      
+                <div class="btn-group pull-right">
+                    <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:;"> Print </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> Save as PDF </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> Export to Excel </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form role="form"  ng-submit="updateImport()">
+                    <div class="form-body" style="margin:15px;">
+                        <div class="row">
+                          
+                           <input type="hidden" id="imports_Id" name="imports_Id" ng-model="imports_Id" value="imports_Id">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <select class="form-control" id="status" name="status" ng-model="status">
+
+                                            <option value="bidding">Bidding</option>
+                                            <option value="shipping">Shipping</option>
+                                            <option value="arrival">Arrival</option>
+                                            <option value="chasisNo">Chasis No</option>
+                                            <option value="pickUp">Pick UP</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Details</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                        <textarea type="text" class="form-control input-circle-right" placeholder="Details"
+                                        id="details" name="details" ng-model="details"> ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+
+<!-- END MAIN JS -->

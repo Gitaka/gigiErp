@@ -1,0 +1,110 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Enquiries</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="enquiriesmanage">Manage Enquiry</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Manage salespersons enquiry
+    <small>manage enquiry</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="CrmController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Manage Enquiry</span>
+                </div>
+ 
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn green">Invoice Client
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right">
+                                <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;"> Print </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"> Save as PDF </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"> Export to Excel </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                    <thead>
+                        <tr>
+                            <th> Title</th>
+                            <th> Enquiry</th>
+                            <th> Car </th>
+                            <th> Price</th>
+                            <th> Customer Name</th>
+                            <th> Customer PhoneNo </th>
+                            <th> Salesperson's Name</th>
+                            <th> Salesperson's Location</th>
+                            <th> Salesperson's PhoneNo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+              
+                        <tr ng-repeat="enquiry in singleEnquiry">
+                            <td>{{enquiry.title}}</td>
+                            <td>{{enquiry.enquiry}}</td>
+                            <td>{{enquiry.car_model}}</td>
+                            <td class="center">{{enquiry.amount}}</td>
+                            <td>
+                               {{enquiry.first_name}} {{enquiry.last_name}}
+                            </td>
+                            <td>
+                                {{enquiry.phone}}
+                            </td>
+                            <td>{{enquiry.username}}</td>
+                            <td>{{enquiry.location}}</td>
+                            <td>{{enquiry.phoneNo}}</td>
+                        </tr>
+
+  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+  
+</script><!-- END MAIN JS -->

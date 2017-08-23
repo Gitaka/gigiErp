@@ -1,0 +1,220 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Imports</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="importsadd">Add Imports</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Add An Import
+    <small>add import requests about cars</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="ImportsController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Add An import</span>
+                </div>
+                <!-- <div class="actions">
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <label class="btn btn-transparent red btn-outline btn-circle btn-sm active">
+                            <input type="radio" name="options" class="toggle" id="option1">Actions</label>
+                        <label class="btn btn-transparent red btn-outline btn-circle btn-sm">
+                            <input type="radio" name="options" class="toggle" id="option2">Settings</label>
+                    </div>
+                </div> -->
+                <div class="btn-group pull-right">
+                    <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="javascript:;"> Print </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> Save as PDF </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"> Export to Excel </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form role="form"  ng-submit="addImport()">
+                    <div class="form-body" style="margin:15px;">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Import Name*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        
+                                        <input type="text" class="form-control input-circle-right" placeholder="Import name" required="true" 
+                                        id="name" name="name" ng-model="name"> 
+                                    </div>
+                                </div>
+                            </div>
+                               <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Importer Id</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Importer Id" required="true"
+                                        id="uid" name="uid" ng-model="uid"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Budget</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Budget" required="true"
+                                        id="location" name="location" ng-model="budget"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Year" 
+                                        id="year" name="year" ng-model="year" > 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Fuel</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Fuel" 
+                                        id="fuel" name="fuel" ng-model="fuel"> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Engine</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-gears"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Engine"
+                                        id="engine" name="engine" ng-model="engine"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Transmission</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Transmission" required="true"
+                                        id="transmission" name="transmission" ng-model="transmission"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Color</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-paint-brush"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Color"
+                                        id="color" name="color" ng-model="color"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Model</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Model" required="true"
+                                        id="model" name="model" ng-model="model"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Make</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Make" required="true"
+                                        id="make" name="make" ng-model="make"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Comments</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                        <textarea type="text" class="form-control input-circle-right" placeholder="Comments"
+                                        id="comments" name="comments" ng-model="comments"> ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+     ComponentsDateTimePickers.init();
+</script>
+<!-- END MAIN JS -->

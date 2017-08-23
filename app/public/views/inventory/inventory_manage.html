@@ -1,0 +1,147 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add A Car</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Add Cars 
+    <small>add new cars to your inventory</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+
+    <div class="row" data-ng-controller="InventoryController">
+      <div class="portlet light bordered">
+        <div class="portlet-title">
+          <div class="caption font-dark">
+              <i class="icon-briefcase font-dark"></i>
+              <span class="caption-subject bold uppercase">Add</span>
+          </div>
+        </div>
+        <div class="portlet-body form">
+
+                <!-- /.box-header -->
+
+                  <div class="row">
+                    <form role="form" ng-submit="addInventory()">
+                      <div class="col-md-6">
+
+                          <div class="form-group">
+                            <label>Make/Model</label>
+
+                            <input type="text" class="form-control" id="post_name" placeholder="Make/Model" ng-model="post_name">
+                          </div>
+                          <!-- /.form-group -->
+                          <div class="form-group">
+                            <label>Description</label>
+
+                            <label for="description">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..." id="post_content" ng-model="post_content"></textarea> 
+                          </div>
+                          <!-- /.form-group -->
+                          <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Price" ng-model="price">
+                          </div>
+                          <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="text" class="form-control" id="year" placeholder="Year" ng-model="year">
+                          </div>
+                          <div class="form-group">
+                            <label for="fuel">Fuel</label>
+                            <input type="text" class="form-control" id="fuel" placeholder="Fuel" ng-model="fuel">
+                          </div>
+                          <div class="form-group">
+                            <label for="transmission">Transmission</label>
+                            <input type="text" class="form-control" id="transmission" placeholder="Transmission" ng-model="transmission">
+                          </div>
+                          <div class="form-group">
+                            <label for="doors">Doors</label>
+                            <input type="text" class="form-control" id="doors" placeholder="Doors" ng-model="doors">
+                          </div>
+                          <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" placeholder="Model" ng-model="model">
+                          </div>
+                          <div class="form-group">
+                            <label for="bodyType">Body Type</label>
+                            <input type="text" class="form-control" id="bodyType" placeholder="Body Type" ng-model="bodyType">
+                          </div>
+                          <div class="form-group">
+                            <label for="mileage">Mileage</label>
+                            <input type="text" class="form-control" id="mileage" placeholder="Mileage" ng-model="mileage">
+                          </div>
+                          <div class="form-group">
+                            <label for="color">Color</label>
+                            <input type="text" class="form-control" id="color" placeholder="Color" ng-model="color">
+                          </div>
+                          <div class="form-group">
+                            <label for="engine">Engine</label>
+                            <input type="text" class="form-control" id="engine" placeholder="Engine" ng-model="engine">
+                          </div>
+                          <div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label style="margin-left: 1%;">Features</label>
+                          <div class="col-md-12" style="margin-top:5px;">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]" ng-model="my_multi_select1">
+                              <option>ABS</option>
+                              <option>Bluetooth</option>
+                              <option selected>High Fuel Efficiency</option>
+                              <option selected>Bluetooth</option>
+                              <option>Navigation</option>
+                              <option>Sunroof</option>
+                              <option>4WD</option>
+                              <option>AWD</option>
+                              <option selected>Stereo System</option>
+                              <option>USB</option>
+                              <option>Leather Seats</option>
+                              <option>A/C</option>
+                              <option>Heated Seats</option>
+                              <option>Cooler</option>
+                              <option>Cup Holders</option>
+                              <option>AVS/PVS</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        
+                      </div>
+                        <!-- /.col -->
+                      
+                    </form>
+                  </div>
+                  <!-- /.row -->
+
+                <!-- /.box-body -->
+   
+
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+       //multiselect start
+                $('#my_multi_select0').multiSelect();
+                $('#my_multi_select1').multiSelect();
+                $('#my_multi_select2').multiSelect({
+                    selectableOptgroup: true
+                });
+    </script>

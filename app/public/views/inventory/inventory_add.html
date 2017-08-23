@@ -1,0 +1,355 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add A Car</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Add Cars 
+    <small>add new cars to your inventory</small>
+</h3>
+
+
+
+    <div class="row" data-ng-controller="InventoryController">
+      <div class="portlet light bordered">
+        <div class="portlet-title">
+          <div class="caption font-dark">
+              <i class="icon-briefcase font-dark"></i>
+              <span class="caption-subject bold uppercase">Add</span>
+
+
+          </div>
+        </div>
+            <div class="col-md-12" style="padding-left:0px;margin-left: 90%">
+                          <div class="btn-group">
+                            <a ui-sref="suppliersadd">
+                                <button id="sample_editable_1_new" class="btn sbold green">Add Supplier</button>
+                            </a>
+                            </div>
+                        </div>
+        <div class="portlet-body form">
+
+                <!-- /.box-header -->
+
+                  <div class="row">
+    <form id="frmUploader" enctype="multipart/form-data" action="inventory" method="post">
+       <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="price">Choose Supplier</label>
+                             <select name="supplier" id="supplier" ng-model="supplier" class="form-control">
+                                  <option value="0">Gigi Motors</option>
+                                  <option ng-repeat="supplier in allSuppliers" value="{{supplier.id}}">{{supplier.name}}</option>
+                                         </select> 
+                          </div>
+                      <div class="form-group">
+                          <label for="price">Registration/Chasis No</label>
+                            <input type="text" class="form-control" id="regNo" placeholder="Registration or Chasis number of car" name="regNo">
+                          </div>
+                  <div class="form-group">
+                          <label for="price">Car Name</label>
+                            <input type="text" class="form-control" id="post_name" placeholder="Name of car" name="post_name">
+                          </div>
+                          <div class="form-group">
+                            <label>Make</label>
+                            <select class="form-control select2" style="width: 100%;" 
+                              id="make"   name="make">
+                              <option  selected="selected"></option>
+                              <option value="1_Audi">Audi</option>
+                              <option value="2_BMW">BMW</option>
+                              <option value="3_Chevrolet">Chevrolet</option>
+                              <option value="4_Ford">Ford</option>
+                              <option value="5_Honda">Honda</option>
+                              <option value="6_Hyundai">Hyundai</option>
+                              <option value="7_Isuzu">Isuzu</option>
+                              <option value="8_Kia">Kia</option>
+                              <option value="9_LandRover">Land Rover</option>
+                              <option value="10_Lexus">Lexus</option>
+                              <option value="11_Mazda">Mazda</option>
+                              <option value="12_Mercedes-Benz">Mercedes-Benz</option>
+                              <option value="13_Mitsubishi">Mitsubishi</option>
+                              <option value="14_Nissan">Nissan</option>
+                              <option value="15_Subaru">Subaru</option>
+                              <option value="16_Toyota">Toyota</option>
+                              <option value="17_Volkswagen">Volkswagen</option>
+                              <option value="18_Volvo">Volvo</option>
+                              <option value="19_Jaguar">Jaguar</option>
+                            </select>
+       
+                          </div>
+                          <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" placeholder="Model" name="model">
+                          </div>
+                                                    <div class="form-group">
+                            <label for="model">Series</label>
+                            <input type="text" class="form-control" id="series" placeholder="Series" name="series">
+                          </div>
+                          <div class="form-group">
+                            <label for="bodyType">Body Type</label>
+                          <select class="form-control select2" style="width: 100%;" 
+                              id="bodyType"   name="bodyType">
+                              <option  selected="selected"></option>
+                              <option value="Saloons">Saloons</option>
+                              <option value="Hatchbacks">HatchBacks</option>
+                              <option value="4wd">4WD</option>
+                              <option value="suv">SUV</option>
+                              <option value="Station Wagon">Station Wagons</option>
+                              <option value="Pickups">Pickups</option>
+                              <option value="Motorbikes">Motorbikes</option>
+                              <option value="Convertibles">Convertibles</option>
+                              <option value="Buses">Buses</option>
+                              <option value="Vans">Vans</option>
+                              <option value="Trucks">Trucks</option>
+                              <option value="Trailers">Trailers</option>
+                              <option value="Minis">Minis</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
+                           <div class="form-group">
+                            <label for="bodyType">Condition</label>
+                          <select class="form-control select2" style="width: 100%;" 
+                              id="condition"   name="condition">
+                              <option  selected="selected"></option>
+                              <option value="BrandNew">Brand New</option>
+                              <option value="ForeignUsed">Foreign Used</option>
+                              <option value="LocalyUsed">Localy Used</option>
+
+                            </select>
+                          </div>
+                      <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..." id="post_content" name="post_content"></textarea> 
+                          </div>
+                          <div class="form-group">
+                            <label for="color">Color</label>
+                            <input type="text" class="form-control" id="color" placeholder="Color" name="color">
+                          </div>
+                          <div class="form-group">
+                            <label for="engine">Engine</label>
+                            <input type="text" class="form-control" id="engine" placeholder="Engine" name="engine">
+                          </div>
+                          <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Price" name="price">
+                          </div>
+                          <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="text" class="form-control" id="year" placeholder="Year" name="year">
+                          </div>
+                          <div class="form-group">
+                            <label for="fuel">Fuel</label>
+                            <input type="text" class="form-control" id="fuel" placeholder="Fuel" name="fuel">
+                          </div>
+                          <div class="form-group">
+                            <label for="transmission">Transmission</label>
+                            <select class="form-control select2" style="width: 100%;" 
+                              id="transmission"   name="transmission">
+                              <option  selected="selected"></option>
+                              <option value="manual">Manual</option>
+                              <option value="automatic">Automatic</option>
+                      
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="doors">Doors</label>
+                            
+                            <select class="form-control select2" style="width: 100%;" 
+                              id="doors"   name="doors">
+                              <option  selected="selected"></option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+
+                            </select>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="mileage">Mileage</label>
+                            <input type="text" class="form-control" id="mileage" placeholder="Mileage" name="mileage">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="bodyType">Duty</label>
+                          <select class="form-control select2" style="width: 100%;" 
+                              id="duty"   name="duty">
+                              <option  selected="selected"></option>
+                              <option value="Exempted">Duty Exempted</option>
+                              <option value="NotPaid">Duty Not Paid</option>
+                              <option value="Paid">Duty Paid</option>
+                              <option value="notSpecified">Not Specified</option>
+                            </select>
+                          </div>
+                           <div class="form-group">
+                            <label for="Interior">Interior</label>
+                          <select class="form-control select2" style="width: 100%;" 
+                              id="interior"   name="interior">
+                              <option  selected="selected"></option>
+                              <option value="Cloth">Cloth</option>
+                              <option value="Leather">Leather</option>
+                          
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="driveType">Drive Type</label>
+                          <select class="form-control select2" style="width: 100%;" 
+                              id="driveType"   name="driveType">
+                              <option  selected="selected"></option>
+                              <option value="2WDWD">2WD</option>
+                              <option value="4WD">4WD</option>
+                            
+                            </select>
+                          </div>
+     
+                  <div class="form-group">
+                      <label for="image">Image</label>
+                      <input type="file" name="imgUploader"/>
+                    </div>
+                      <div>
+                                 
+                          <input type="submit" class="btn btn-primary" name="submit" id="btnSubmit" value="Submit" />
+                      </div>
+       </div>
+       <div class="col-md-6 box-widget">
+       <div class="row" style="padding-bottom:2%"> 
+                    <div class="radio col-md-3">
+                        <label></label>
+                  </div>
+       <h3>Car Features</h3>
+       </div>
+       <div class="row">
+                    <div class="col-md-3">
+                        <label></label>
+                  </div>
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" name="Leather Interior" value="Leather Interior">Leather Interior
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" name="Keyless Entry" value="Keyless Entry">Keyless Entry
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" name="Manual" value="Manual">Manual
+                      </label>
+                  </div>
+                 
+
+       </div>
+       <div class="row">
+                    <div class="col-md-3">
+                        <label></label>
+                  </div>
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" name="Power Steering" value="Power Steering">Power Steering
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" name="Push to Start" value="Push to Start">Push to Start
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" name="Reverse Camera" value="Reverse Camera">Reverse Camera
+                      </label>
+                  </div>
+                 
+       </div>
+       <div class="row">
+                    <div class="col-md-3">
+                        <label></label>
+                  </div>
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" name="Steering Controls" value="Steering Controls">Steering Controls
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" name="Sun Roof" value="Sun Roof">Sun Roof
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" name="Low Mileage" value="Low Mileage">Low Mileage
+                      </label>
+                  </div>
+
+
+
+                 
+         
+       </div>
+
+       </div>
+    </form>
+ </div>
+
+                     <!-- <div class="col-md-6">
+                        <div class="form-group">
+                          <label style="margin-left: 1%;">Features</label>
+                          <div class="col-md-12" style="margin-top:5px;">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select0" name="my_multi_select0[]" ng-model="my_multi_select0">
+                              <option>ABS</option>
+                              <option>Bluetooth</option>
+                              <option selected>High Fuel Efficiency</option>
+                              <option selected>Bluetooth</option>
+                              <option>Navigation</option>
+                              <option>Sunroof</option>
+                              <option>4WD</option>
+                              <option>AWD</option>
+                              <option selected>Stereo System</option>
+                              <option>USB</option>
+                              <option>Leather Seats</option>
+                              <option>A/C</option>
+                              <option>Heated Seats</option>
+                              <option>Cooler</option>
+                              <option>Cup Holders</option>
+                              <option>AVS/PVS</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        
+                      </div>-->
+                        <!-- /.col -->
+                      
+                    </form>
+                  </div>
+                  <!-- /.row -->
+
+                <!-- /.box-body -->
+   
+
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+       //multiselect start
+                $('#my_multi_select0').multiSelect();
+                $('#my_multi_select1').multiSelect();
+                $('#my_multi_select2').multiSelect({
+                    selectableOptgroup: true
+                });
+    </script>

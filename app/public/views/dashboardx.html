@@ -1,0 +1,936 @@
+BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="dashboard">Dashboard</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+
+    </div>
+</div>
+<!-- BEGIN PAGE TITLE-->
+
+        <h1 class="page-title"> Admin Dashboard
+            <small>analytics, data, statistics, charts, recent events and reports</small>
+        </h1>
+        <!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="DashboardController">
+    <!-- BEGIN DASHBOARD STATS 1-->
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                    <div class="visual">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{invCount}}">{{invCount}}</span>                            
+                        </div>
+                        <div class="desc">Inventory</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+                    <div class="visual">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{importersCount}}">{{importersCount}}</span> </div>
+                        <div class="desc">Importers</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+                    <div class="visual">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{importsCount}}">{{importsCount}}</span>
+                        </div>
+                        <div class="desc">Imports</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                    <div class="visual">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{enquiriesCount}}"></span>{{enquiriesCount}}</div>
+                        <div class="desc">Enquiries</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- END DASHBOARD STATS 1-->
+    <div class="row">
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bar-chart font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">Site Visits</span>
+                        <span class="caption-helper">weekly stats...</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn red btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">New</label>
+                            <label class="btn red btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Returning</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="site_statistics_loading">
+                        <img src="assets/global/img/loading.gif" alt="loading" /> </div>
+                    <div id="site_statistics_content" class="display-none">
+                        <div id="site_statistics" class="chart"> </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered ">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-bar-chart font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">Member Activity</span>
+                        <span class="caption-helper hide">weekly stats...</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn green btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Today</label>
+                            <label class="btn red btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Week</label>
+                            <label class="btn blue btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Month</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row number-stats margin-bottom-30">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="stat-left">
+                                <div class="stat-chart">
+                                    <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                    <div id="sparkline_bar"></div>
+                                </div>
+                                <div class="stat-number">
+                                    <div class="title"> Total </div>
+                                    <div class="number"> 2460 </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="stat-right">
+                                <div class="stat-chart">
+                                    <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                    <div id="sparkline_bar2"></div>
+                                </div>
+                                <div class="stat-number">
+                                    <div class="title"> New </div>
+                                    <div class="number"> 719 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table class="table table-hover table-light">
+                            <thead>
+                                <tr class="uppercase">
+                                    <th colspan="2"> MEMBER </th>
+                                    <th> Earnings </th>
+                                    <th> CASES </th>
+                                    <th> CLOSED </th>
+                                    <th> RATE </th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td class="fit">
+                                    <img class="user-pic rounded" src="../assets/pages/media/users/avatar4.jpg"> </td>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">Brain</a>
+                                </td>
+                                <td> $345 </td>
+                                <td> 45 </td>
+                                <td> 124 </td>
+                                <td>
+                                    <span class="bold font-green">80%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fit">
+                                    <img class="user-pic rounded" src="../assets/pages/media/users/avatar5.jpg"> </td>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">Nick</a>
+                                </td>
+                                <td> $560 </td>
+                                <td> 12 </td>
+                                <td> 24 </td>
+                                <td>
+                                    <span class="bold font-green">67%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fit">
+                                    <img class="user-pic rounded" src="../assets/pages/media/users/avatar6.jpg"> </td>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">Tim</a>
+                                </td>
+                                <td> $1,345 </td>
+                                <td> 450 </td>
+                                <td> 46 </td>
+                                <td>
+                                    <span class="bold font-green">98%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fit">
+                                    <img class="user-pic rounded" src="../assets/pages/media/users/avatar7.jpg"> </td>
+                                <td>
+                                    <a href="javascript:;" class="primary-link">Tom</a>
+                                </td>
+                                <td> $645 </td>
+                                <td> 50 </td>
+                                <td> 89 </td>
+                                <td>
+                                    <span class="bold font-green">58%</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered ">
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-settings font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">Sales Summary</span>
+                        <span class="caption-helper hide">weekly stats...</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn dark btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Today</label>
+                            <label class="btn dark btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Week</label>
+                            <label class="btn dark btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Month</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row list-separated">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="font-grey-mint font-sm"> Total Sales </div>
+                            <div class="uppercase font-hg font-red-flamingo"> 13760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="font-grey-mint font-sm"> Revenue </div>
+                            <div class="uppercase font-hg font-green"> 4760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="font-grey-mint font-sm"> Expenses </div>
+                            <div class="uppercase font-hg font-purple"> 1760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="font-grey-mint font-sm"> Growth </div>
+                            <div class="uppercase font-hg font-blue"> 9760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-separated list-inline-xs hide">
+                        <li>
+                            <div class="font-grey-mint font-sm"> Total Sales </div>
+                            <div class="uppercase font-hg font-red-flamingo"> 13760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </li>
+                        <li> </li>
+                        <li class="border">
+                            <div class="font-grey-mint font-sm"> Revenue </div>
+                            <div class="uppercase font-hg font-green"> 4760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <div class="font-grey-mint font-sm"> Expenses </div>
+                            <div class="uppercase font-hg font-purple"> 1760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </li>
+                        <li class="divider"> </li>
+                        <li>
+                            <div class="font-grey-mint font-sm"> Growth </div>
+                            <div class="uppercase font-hg font-blue"> 9760
+                                <span class="font-lg font-grey-mint">$</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="sales_statistics" class="portlet-body-morris-fit morris-chart" style="height: 260px"> </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-md-6 col-sm-12">
+        <!-- Begin: life time stats -->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-share font-blue"></i>
+                        <span class="caption-subject font-blue bold uppercase">Overview</span>
+                        <span class="caption-helper">report overview...</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <a class="btn green btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;"> All Project </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:;"> AirAsia </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Cruise </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> HSBC </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:;"> Pending
+                                        <span class="badge badge-danger"> 4 </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Completed
+                                        <span class="badge badge-success"> 12 </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Overdue
+                                        <span class="badge badge-warning"> 9 </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#overview_1" data-toggle="tab"> Top Selling </a>
+                            </li>
+                            <li>
+                                <a href="#overview_2" data-toggle="tab"> Most Viewed </a>
+                            </li>
+                            <li>
+                                <a href="#overview_3" data-toggle="tab"> New Customers </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> Orders
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="#overview_4" data-toggle="tab">
+                                            <i class="icon-bell"></i> Latest 10 Orders </a>
+                                    </li>
+                                    <li>
+                                        <a href="#overview_4" data-toggle="tab">
+                                            <i class="icon-info"></i> Pending Orders </a>
+                                    </li>
+                                    <li>
+                                        <a href="#overview_4" data-toggle="tab">
+                                            <i class="icon-speech"></i> Completed Orders </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#overview_4" data-toggle="tab">
+                                            <i class="icon-settings"></i> Rejected Orders </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="overview_1">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th> Product Name </th>
+                                                <th> Price </th>
+                                                <th> Sold </th>
+                                                <th> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Apple iPhone 4s - 16GB - Black </a>
+                                                </td>
+                                                <td> $625.50 </td>
+                                                <td> 809 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Samsung Galaxy S III SGH-I747 - 16GB </a>
+                                                </td>
+                                                <td> $915.50 </td>
+                                                <td> 6709 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Motorola Droid 4 XT894 - 16GB - Black </a>
+                                                </td>
+                                                <td> $878.50 </td>
+                                                <td> 784 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Samsung Galaxy Note 4 </a>
+                                                </td>
+                                                <td> $925.50 </td>
+                                                <td> 21245 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Regatta Luca 3 in 1 Jacket </a>
+                                                </td>
+                                                <td> $25.50 </td>
+                                                <td> 1245 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Samsung Galaxy Note 3 </a>
+                                                </td>
+                                                <td> $925.50 </td>
+                                                <td> 21245 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="overview_2">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th> Product Name </th>
+                                                <th> Price </th>
+                                                <th> Views </th>
+                                                <th> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Metronic - Responsive Admin + Frontend Theme </a>
+                                                </td>
+                                                <td> $20.00 </td>
+                                                <td> 11190 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Regatta Luca 3 in 1 Jacket </a>
+                                                </td>
+                                                <td> $25.50 </td>
+                                                <td> 1245 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Motorola Droid 4 XT894 - 16GB - Black </a>
+                                                </td>
+                                                <td> $878.50 </td>
+                                                <td> 784 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Apple iPhone 4s - 16GB - Black </a>
+                                                </td>
+                                                <td> $625.50 </td>
+                                                <td> 809 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Samsung Galaxy S III SGH-I747 - 16GB </a>
+                                                </td>
+                                                <td> $915.50 </td>
+                                                <td> 6709 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Motorola Droid 4 XT894 - 16GB - Black </a>
+                                                </td>
+                                                <td> $878.50 </td>
+                                                <td> 784 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="overview_3">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th> Customer Name </th>
+                                                <th> Total Orders </th>
+                                                <th> Total Amount </th>
+                                                <th> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> David Wilson </a>
+                                                </td>
+                                                <td> 3 </td>
+                                                <td> $625.50 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Amanda Nilson </a>
+                                                </td>
+                                                <td> 4 </td>
+                                                <td> $12625.50 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Paul Strong </a>
+                                                </td>
+                                                <td> 1 </td>
+                                                <td> $890.85 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Jhon Doe </a>
+                                                </td>
+                                                <td> 2 </td>
+                                                <td> $125.00 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Bill Chang </a>
+                                                </td>
+                                                <td> 45 </td>
+                                                <td> $12,125.70 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Paul Strong </a>
+                                                </td>
+                                                <td> 1 </td>
+                                                <td> $890.85 </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="overview_4">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th> Customer Name </th>
+                                                <th> Date </th>
+                                                <th> Amount </th>
+                                                <th> Status </th>
+                                                <th> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> David Wilson </a>
+                                                </td>
+                                                <td> 3 Jan, 2013 </td>
+                                                <td> $625.50 </td>
+                                                <td>
+                                                    <span class="label label-sm label-warning"> Pending </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Amanda Nilson </a>
+                                                </td>
+                                                <td> 13 Feb, 2013 </td>
+                                                <td> $12625.50 </td>
+                                                <td>
+                                                    <span class="label label-sm label-warning"> Pending </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Paul Strong </a>
+                                                </td>
+                                                <td> 1 Jun, 2013 </td>
+                                                <td> $890.85 </td>
+                                                <td>
+                                                    <span class="label label-sm label-success"> Success </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Jhon Doe </a>
+                                                </td>
+                                                <td> 20 Mar, 2013 </td>
+                                                <td> $125.00 </td>
+                                                <td>
+                                                    <span class="label label-sm label-success"> Success </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Bill Chang </a>
+                                                </td>
+                                                <td> 29 May, 2013 </td>
+                                                <td> $12,125.70 </td>
+                                                <td>
+                                                    <span class="label label-sm label-info"> In Process </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:;"> Paul Strong </a>
+                                                </td>
+                                                <td> 1 Jun, 2013 </td>
+                                                <td> $890.85 </td>
+                                                <td>
+                                                    <span class="label label-sm label-success"> Success </span>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-search"></i> View </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- End: life time stats -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-share font-red-sunglo hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">Revenue</span>
+                        <span class="caption-helper">monthly stats...</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Filter Range
+                                <span class="fa fa-angle-down"> </span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;"> Q1 2014
+                                        <span class="label label-sm label-default"> past </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Q2 2014
+                                        <span class="label label-sm label-default"> past </span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="javascript:;"> Q3 2014
+                                        <span class="label label-sm label-success"> current </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Q4 2014
+                                        <span class="label label-sm label-warning"> upcoming </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="site_activities_loading">
+                        <img src="assets/global/img/loading.gif" alt="loading" /> </div>
+                    <div id="site_activities_content" class="display-none">
+                        <div id="site_activities" style="height: 228px;"> </div>
+                    </div>
+                    <div style="margin: 20px 0 10px 30px">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                <span class="label label-sm label-success"> Revenue: </span>
+                                <h3>$13,234</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                <span class="label label-sm label-info"> Tax: </span>
+                                <h3>$134,900</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                <span class="label label-sm label-danger"> Shipment: </span>
+                                <h3>$1,134</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                <span class="label label-sm label-warning"> Orders: </span>
+                                <h3>235090</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light calendar bordered">
+                <div class="portlet-title ">
+                    <div class="caption">
+                        <i class="icon-calendar font-dark hide"></i>
+                        <span class="caption-subject font-dark bold uppercase">Feeds</span>
+                    </div>
+                </div>
+                <!-- <div class="portlet-body">
+                    <div id="calendar"> </div>
+                </div> -->
+            </div>
+            <!-- END PORTLET-->
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-cursor font-dark hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">General Stats</span>
+                        </div>
+                        <div class="actions">
+                            <a href="javascript:;" class="btn btn-sm btn-circle red easy-pie-chart-reload">
+                                <i class="fa fa-repeat"></i> Reload </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number transactions" data-percent="55">
+                                        <span>+55</span>% </div>
+                                    <a class="title" href="javascript:;"> Transactions
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="margin-bottom-10 visible-sm"> </div>
+                            <div class="col-md-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number visits" data-percent="85">
+                                        <span>+85</span>% </div>
+                                    <a class="title" href="javascript:;"> New Visits
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="margin-bottom-10 visible-sm"> </div>
+                            <div class="col-md-4">
+                                <div class="easy-pie-chart">
+                                    <div class="number bounce" data-percent="46">
+                                        <span>-46</span>% </div>
+                                    <a class="title" href="javascript:;"> Bounce
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-equalizer font-dark hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">Server Stats</span>
+                            <span class="caption-helper">monthly stats...</span>
+                        </div>
+                        <div class="tools">
+                            <a href="" class="collapse"> </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                            <a href="" class="reload"> </a>
+                            <a href="" class="remove"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="sparkline-chart">
+                                    <div class="number" id="sparkline_bar5"></div>
+                                    <a class="title" href="javascript:;"> Network
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="margin-bottom-10 visible-sm"> </div>
+                            <div class="col-md-4">
+                                <div class="sparkline-chart">
+                                    <div class="number" id="sparkline_bar6"></div>
+                                    <a class="title" href="javascript:;"> CPU Load
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="margin-bottom-10 visible-sm"> </div>
+                            <div class="col-md-4">
+                                <div class="sparkline-chart">
+                                    <div class="number" id="sparkline_line"></div>
+                                    <a class="title" href="javascript:;"> Load Rate
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<script>
+    Dashboard.init();
+</script>
+<!-- BEGIN MAIN JS & CSS

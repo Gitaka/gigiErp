@@ -1,0 +1,173 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Enquiries</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="enquiriesadd">Add Enquiries</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Add An Enquiry
+    <small>add enquiry</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="CrmController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Add An Enquiry</span>
+                </div>
+
+            </div>
+
+            <div class="portlet-body form">
+                <form role="form"  ng-submit="addEnquiries()">
+                    <div class="form-body" style="margin:15px;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Title*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        
+                                        <input type="text" class="form-control input-circle-right" placeholder="Objective of enquiry" required="true" 
+                                        id="name" name="title" ng-model="title"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Enquiry</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <textarea class="form-control" cols="10" rows="5" 
+                                        name="enquiry" ng-model="enquiry"></textarea>
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Sales Person</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                    <select name="salesId" ng-model="salesId" class="form-control">
+                                          <option ng-repeat="user in users" value="{{user.id}}">{{user.username}}</option>
+                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Registration No</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                     <input type="text" class="form-control input-circle-right" placeholder="RegNo ie KCG 202B" required="true"
+                                        id="regNo" name="regNo" ng-model="regNo">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Make/Model</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Make/Model" required="true"
+                                        id="phoneNo" name="model" ng-model="model"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-money"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Amount" required="true"
+                                        id="phoneNo" name="amount" ng-model="amount"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Customer</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <select ng-model="customerId" class="form-control">
+                                          <option ng-repeat="client in clients" value="{{client.id}}">{{client.first_name}}</option>
+                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+
+ 
+      
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-thumbs-up"></i>
+                                        </span>
+                                         <select ng-model="status" class="form-control">
+                                             <option value="hot">Hot</option>
+                                             <option value="medium">Medium</option>
+                                             <option value="cold">Cold</option>
+                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+    
+                        </div>
+                        <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS -->

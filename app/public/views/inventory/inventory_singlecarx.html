@@ -1,0 +1,783 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="inventoryallmakes">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="inventorysinglemake">View Single Car</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">View Single Car
+    <small></small>
+</h3>
+        <div class="row" style="padding-bottom: 2%">
+
+             <div class="col-md-3">
+                 <div class="btn-group">
+                      <a ui-sref="#">
+                        <button id="sample_editable_1_new" class="btn  white">Available
+                                </button>
+                      </a>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                    <div class="btn-group">
+                      <a ui-sref="inventoryallmakes">
+                          <button id="sample_editable_1_new" class="btn white">View all Cars
+                                </button>
+                      </a>
+                  </div>
+              </div>
+
+       </div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="InventoryController">
+    <div class="col-md-12">
+
+        <div class="row" >
+            <div class="col-md-4">
+              <!-- Box Comment -->
+              <div class="box box-widget">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <span class="username">{{inv.post_name}}</span>
+                    <span class="description"><h5 style="color:red">{{inv.status}}</h5></span>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <a ng-click="updatePic(inv.ID)" class="hov">
+                  <div class="box-body">
+                    <img class="img-responsive pad" src="../../uploads/{{inv.imgUrl}}" alt="Photo"> 
+                    <div class="tile">
+                        <div class="tile-object">
+                        </div>
+                    </div>
+                  </div>
+                </a>
+                <!-- /.box-body -->
+              </div>
+              
+              <div class="box box-widget">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                     <h2>{{inv.regNo}}</h2>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+               
+                  <div class="box-body">
+                    
+                    <div class="tile">
+                    <h3 style="color:green">Manage Car</h3>
+
+                    <!--<span class="username"><h4>Researved</h4></span>
+                    <span class="username"><h4>Mark as Sold</h4></span>
+                    <span class="username"><h4>Not Available in Yard</h4></span>
+                    <span class="username"><h4>Edit</h4></span>-->
+                    </div>
+                  </div>
+             
+                <!-- /.box-body -->
+              </div>
+
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-8" >
+              <!-- Box Comment -->
+              <div class="box box-widget">
+                <div style="border-top: 4px solid #333;padding: 20px 15px;">
+                  <h3>Car Details</h3>
+                  <!-- /.user-block -->
+                  <style type="text/css">
+                    table > tbody tr td {
+                      font-size: 12px;
+                      color: #888888;
+                      border-bottom: 1px solid #d5d9e0;
+                    }
+                  </style>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Body                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.bodyType}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                           <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Year                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.fabricationYear}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Price                 
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.price}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Doors                
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.doors}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Fuel                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.fuel}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Transmission                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.transmission}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Color                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.color}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Mileage                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.mileage}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Make                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.make}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Model                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.model}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Series                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.series}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Condition                 
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.carCondition}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Duty                 
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.duty}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Driver Setup                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.driverSetup}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Drive Type                  
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.driveType}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td style="width: 30px;border: 0;"></td>
+                      <td style="padding: 13px 0 14px;">
+                        <table style="margin-bottom: 0;table-layout: fixed;">
+                          <tr>
+                            <td style="padding-right:0 5px 0 0;font-size: 13px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              <i class=""></i>Interior                 
+                            </td>
+                            <td style="padding:0 0 0 10px;color: #222;font-size: 14px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;border: 0;vertical-align: middle;">
+                              {{inv.interior}}
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+
+
+
+                  </table>
+        
+                </div>
+              </div>
+              <!-- /.box -->
+              
+
+              <div class="box box-widget">
+                <div style="border-top: 4px solid #333;padding: 20px 15px;">
+                  <h3>Features</h3>
+                  <div class="lists-inline">
+                    <style type="text/css">
+                      .lists-inline>ul{width:100%;margin-bottom:0;padding-right:15px;display:inline-block;vertical-align:top}ul.list-style-2{padding:0;list-style:none}ul.list-style-2 li{float:left;width:25%;position:relative;padding-left:31px;margin-bottom:8px}ul.list-style-2 li:before{position:absolute;display:block;font:normal normal normal 14px/1 FontAwesome;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0);left:3px;top:4px;content:"\f058";font-size:14px;color:#e41515}
+                    </style>
+                    <ul class="list-style-2" style="font-size: 13px;">
+                      <li ng-if="inv.leatherInterior == 1">Leather Interior
+                      </li>
+                      <li ng-if="inv.keylessEntry == 1">Keyless Entry</li>
+                      <li ng-if="inv.manual == 1">Manual</li>
+                      <li ng-if="inv.powerSteering == 1">Power Steering</li>
+                    </ul>
+                    <ul class="list-style-2" style="font-size: 13px;">
+                      <li ng-if="inv.pushToStart == 1">Push to Start</li>
+                      <li ng-if="inv.reverseCamera == 1">Reverse Camera</li>
+                      <li ng-if="inv.steeringControls == 1">Steering Controls</li>
+                      <li ng-if="inv.sunRoof == 1">Sun Roof</li>
+                    </ul>
+                      <ul class="list-style-2" style="font-size: 13px;">
+                        <li ng-if="inv.lowMileage == 1">Low Mileage</li>
+                
+                      </ul>
+                      <ul class="list-style-2" style="font-size: 13px;">
+                       
+                      </ul>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+           
+    </div>
+    <div  ng-if="inv.status =='Reserved'" style="padding-left: 13px">
+      <button class="btn btn-lg btn-default" ng-click="reservationDetails(inv.ID)" style="color:red">View reservation details</button>
+    </div>
+    <div  ng-if="inv.status =='Returned to Supplier'" style="padding-left: 13px">
+      <button class="btn btn-lg btn-default" ng-click="returnDetails(inv.ID)" style="color:red">View car return details</button>
+    </div>
+    <div class="box box-widget"  ng-if="inv.status =='Available'">
+
+      <div class="col-md-7 col-sm-7" style="background-color:#fff">
+                                        <div class="tabbable-line">
+                          <ul class="nav nav-tabs ">
+                                                <li class="active">
+                                                    <a href="#" data-target="#tab_1" data-toggle="tab">Researve Car</a>
+                                                </li>
+                                               <li >
+                                                    <a href="#" data-target="#tab_4" data-toggle="tab">Mark as Sold</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#" data-target="#tab_2" data-toggle="tab"> Returned to Supplier</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-target="#tab_3" data-toggle="tab"> Edit Car details</a>
+                                                </li>
+                                  </ul>
+
+                                            <div class="tab-content">
+                                                
+                                    <div class="tab-pane" id="tab_4">
+                                    <div style="padding-left: 30%">
+                                          <div class="col-md-12">
+                                               <button class="btn btn-success btn-lg" ng-click="flagSold(inv.ID)">Click Here To Flag as Sold</button>   
+                                          </div>
+                                      </div>
+                                      
+                                    </div>
+
+                                <div class="tab-pane active" id="tab_1">
+                                    <form role="form" class="form-horizontal" ng-submit="reserveCar()">
+                                        <!-- TASK HEAD -->
+                                     
+                                        <div class="form">
+
+                                              <div class="form-group">
+                                                <div class="col-md-12" >
+                                                <label>Car Id</label>
+                                                   <input type="text" class="form-control" name="carId" placeholder="Enter this value: {{inv.ID}}"
+                                                   ng-model="carId" id="carId">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Reservation Deposit"
+                                                    id="deposit" name="deposit" ng-model="deposit"> </div>
+                                            </div>
+                                            <!-- TASK DESC -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                  <textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder="Comment..."
+                                                    id="commet" name="comment" ng-model="comment"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- END TASK DESC -->
+                                            <!-- TASK DUE DATE -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="input-icon">
+                                                        <i class="fa fa-calendar"></i>
+                                                        <input type="text" class="form-control todo-taskbody-due" placeholder="Due Date..."
+                                                        id="dueDate" name="dueDate" ng-model="dueDate"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Customer Name"
+                                                    id="customerName" name="customerName" ng-model="customerName"> </div>
+                                            </div>
+                                              <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <input type="text" class="form-control todo-taskbody-tasktitle" placeholder="Customer PhoneNo"
+                                                    id="customerPhoneNo" name="customerPhoneNo" ng-model="customerPhoneNo"> </div>
+                                            </div>
+                                            <!-- TASK TAGS -->
+
+                                            <!-- TASK TAGS -->
+                                            <div class="form-actions right todo-form-actions">
+                                                 <button type="submit" class="btn green">Submit</button>
+                                                 <button type="button" class="btn default">Cancel</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                                </div>
+
+                                <div class="tab-pane" id="tab_2">
+
+                                    <form role="form" class="form-horizontal" ng-submit="returnedCar()">
+                                        <!-- TASK HEAD -->
+                                        <div class="form">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>Car Id</label>
+                                                   <input type="text" class="form-control" name="carId" placeholder="Enter this value: {{inv.ID}}"
+                                                   ng-model="carId" id="carId">
+                                                </div>
+                                            </div>
+
+                              
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <textarea class="form-control todo-taskbody-taskdesc" rows="8" placeholder=" Comment on car availability in the yard..."
+                                                    id="comment" name="comment" ng-model="comment"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                <label>Availability</label>
+                                                      <select class="form-control select2" style="width: 100%;" 
+                                                        id="availability" ng-model="availability"   name="availability">
+                                                          <option value="Returned to supplier">Returned to supplier</option>
+                                                        <option value="available">Available</option>
+                                                    
+                                                      </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- TASK TAGS -->
+            
+                                            <!-- TASK TAGS -->
+                                            <div class="form-actions right todo-form-actions">
+                                                 <button type="submit" class="btn green">Submit</button>
+                                                 <button type="button" class="btn default">Cancel</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                                <div class="tab-pane" id="tab_3">
+
+                                  <form role="form" class="form-horizontal" action="updateInventory" method="post">
+                                        <!-- TASK HEAD -->
+                                        <div class="form">
+                                            <div class="form-group">
+                                                <div class="col-md-12" >
+                                                    <label>Car Id</label>
+                                                   <input type="text" class="form-control" name="carId" placeholder="Enter this value: {{inv.ID}}"
+                                                    id="carId">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Model</label>
+                                                    <input type="text" class="form-control" id="model" placeholder="Model" name="model" value="{{inv.model}}" > 
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Reg/Chasis No</label>
+                                       <input type="text" class="form-control" id="regNo" placeholder="Registration No or Chasis No" name="regNo" value="{{inv.regNo}}">
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Price</label>
+                                                       <input type="text" class="form-control" id="price" placeholder="Price" name="price" value="{{inv.price}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Year</label>
+                                                    <input type="text" class="form-control" id="year" placeholder="Year" name="year" value="{{inv.fabricationYear}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Fuel</label>
+                                                    <input type="text" class="form-control" id="fuel" placeholder="Fuel" name="fuel" value="{{inv.fuel}}" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                  <label for="transmission">Transmission</label>
+                                               <select class="form-control select2" style="width: 100%;"  
+                                                    id="transmission"   name="transmission" required>
+                                                    <option  selected="selected"></option>
+                                                    <option value="manual">Manual</option>
+                                                    <option value="automatic">Automatic</option>
+                                            
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                        <label for="doors">Doors</label>
+                            
+                                              <select class="form-control select2" style="width: 100%;" 
+                                                 id="doors"  name="doors" required>
+                                                    <option  selected="selected"></option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <!-- TASK DESC -->
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Series</label>
+                                       <input type="text" class="form-control" id="series" placeholder="Series" name="series" value="{{inv.series}}" >
+                                                </div>
+                                            </div>
+                                              <div class="form-group">
+                                                <div class="col-md-12">
+                                                <label for="bodyType">Body Type</label>
+                          <select class="form-control select2" style="width: 100%;" 
+
+                              id="bodyType"   name="bodyType"  required>
+                              <option  selected="selected"></option>
+                              <option value="Saloons">Saloons</option>
+                              <option value="Hatchbacks">HatchBacks</option>
+                              <option value="4wd">4WD</option>
+                              <option value="suv">SUV</option>
+                              <option value="Station Wagon">Station Wagons</option>
+                              <option value="Pickups">Pickups</option>
+                              <option value="Motorbikes">Motorbikes</option>
+                              <option value="Convertibles">Convertibles</option>
+                              <option value="Buses">Buses</option>
+                              <option value="Vans">Vans</option>
+                              <option value="Trucks">Trucks</option>
+                              <option value="Trailers">Trailers</option>
+                              <option value="Minis">Minis</option>
+                              <option value="Other">Other</option>
+                            </select>
+                                                </div>
+                                            </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                   <label for="bodyType">Condition</label>
+                                        <select class="form-control select2" style="width: 100%;" 
+                                                  id="condition" name="condition" required>
+                                                  <option  selected="selected"></option>
+                                                  <option value="BrandNew">Brand New</option>
+                                                  <option value="ForeignUsed">Foreign Used</option>
+                                                  <option value="LocalyUsed">Localy Used</option>
+
+                                                </select>                                 
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Mileage</label>
+                                        <input type="text" class="form-control" id="mileage" placeholder="Mileage" name="mileage" value="{{inv.mileage}}" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                        <label for="bodyType">Duty</label>
+                                                <select class="form-control select2" style="width: 100%;" 
+                                                    id="duty" ng-model="duty"   name="duty" required>
+                                                    <option  selected="selected"></option>
+                                                    <option value="Exempted">Duty Exempted</option>
+                                                    <option value="NotPaid">Duty Not Paid</option>
+                                                    <option value="Paid">Duty Paid</option>
+                                                    <option value="notSpecified">Not Specified</option>
+                                                  </select>
+                                                </div>
+                                            </div> 
+
+                                              <div class="form-group">
+                                                <div class="col-md-12">
+                                                      <label for="Interior">Interior</label>
+                                              <select class="form-control select2" style="width: 100%;" 
+                                                      id="interior"    name="interior" required>
+                                                      <option  selected="selected"></option>
+                                                      <option value="Cloth">Cloth</option>
+                                                      <option value="Leather">Leather</option>
+                                                  
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                <label for="driveType">Driver Setup</label>
+                                                <select class="form-control select2" style="width: 100%;" 
+                                                    id="driverSetup"  name="driverSetup" required>
+                                                    <option  selected="selected"></option>
+                                                    <option value="Lefthand">Lefthand</option>
+                                                    <option value="Righthand">Righthand</option>
+                                                  </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                        <label for="driveType">Drive Type</label>
+                                            <select class="form-control select2" style="width: 100%;" 
+                                                id="driveType"   name="driveType" required>
+                                                <option  selected="selected"></option>
+                                                <option value="2WDWD">2WD</option>
+                                                <option value="4WD">4WD</option>
+                                              
+                                              </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Color</label>
+                                    <input type="text" class="form-control" id="color" placeholder="Color" name="color" value="{{inv.color}}">
+                                                </div>
+                                            </div>
+                                          <div class="form-group">
+                                                <div class="col-md-12">
+                                                   <label>Engine</label>
+                                        <input type="text" class="form-control" id="engine" placeholder="Engine" name="engine" value="{{inv.engine}}">
+                                                </div>
+                                            </div>
+                                            <!-- TASK TAGS -->
+                                            <div class="form-actions right todo-form-actions">
+                                                 <button type="submit" class="btn green">Submit</button>
+                                                 <button type="button" class="btn default">Cancel</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+      </div>
+      <div class="col-md-3" style="background:#fff;margin-left: 20px">
+        <h3>Edit Car Features</h3>
+        <div>
+                 <div class="row">
+                  
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" ng-click='updateFeature(inv.ID+"_leatherInterior")' name="Leather Interior">Leather Interior
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" ng-click='updateFeature(inv.ID+"_keylessEntry")' name="keylessEntry" value="Keyless Entry">Keyless Entry
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" ng-click='updateFeature(inv.ID+"_manual")' name="Manual" value="Manual">Manual
+                      </label>
+                  </div>
+                 
+
+       </div>
+       <div class="row">
+             
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" ng-click='updateFeature(inv.ID+"_powerSteering")' name="Power Steering" value="Power Steering">Power Steering
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" ng-click='updateFeature(inv.ID+"_pushToStart")' name="Push to Start" value="Push to Start">Push to Start
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" ng-click='updateFeature(inv.ID+"_reverseCamera")' name="Reverse Camera" value="Reverse Camera">Reverse Camera
+                      </label>
+                  </div>
+                 
+       </div>
+       <div class="row" style="padding-left: 0px">
+      
+                  <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" ng-click='updateFeature(inv.ID+"_steeringControls")' name="Steering Controls" value="Steering Controls">Steering Controls
+                        </label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>
+                       <input type="checkbox" ng-click='updateFeature(inv.ID+"_sunRoof")' name="Sun Roof" value="Sun Roof">Sun Roof
+                    </label>
+                  </div>
+                  <div class="col-md-3">
+                      <label>
+                        <input type="checkbox" ng-click='updateFeature(inv.ID+"_lowMileage")' name="Low Mileage" value="Low Mileage">Low Mileage
+                      </label>
+                  </div>
+       </div>
+
+        </div>
+      </div>
+    </div> <!--End of box widget-->
+
+      </div>
+
+    </div>
+      
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS

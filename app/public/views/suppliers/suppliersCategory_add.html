@@ -1,0 +1,72 @@
+BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="suppliersview">Suppliers</a>
+            <i class="fa fa-angle-right"></i>
+
+        </li>
+        <li>
+            <a ui-sref="suppliersadd">Add Suppliers</a>
+        </li>
+    </ul>
+</div>
+<h3 class="page-title"> Add Suppliers Categories
+    <small></small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="SuppliersController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Add Category</span>
+                </div>
+
+            </div>
+
+            <div class="portlet-body form">
+                <form role="form"  ng-submit="addSupplierCategory()">
+                    <div class="form-body" style="margin:15px;">
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="text" class="form-control " placeholder="Category" required="true"
+                                        id="category" name="category" ng-model="category" > 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS

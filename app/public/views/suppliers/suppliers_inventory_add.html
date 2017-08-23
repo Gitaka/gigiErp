@@ -1,0 +1,186 @@
+<!--BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Inventory</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Add A Car</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Add Suppliers Cars 
+    <small>add new supplier cars to your inventory</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+
+    <div class="row" data-ng-controller="SuppliersController">
+      <div class="portlet light bordered">
+        <div class="portlet-title">
+          <div class="caption font-dark">
+              <i class="icon-briefcase font-dark"></i>
+              <span class="caption-subject bold uppercase">Add</span>
+              
+          </div>
+        </div>
+        <div class="portlet-body form">
+
+                <!-- /.box-header -->
+
+                  <div class="row">
+              
+    <form id="frmUploader" enctype="multipart/form-data" action="addSupplierInventory" method="post">
+       <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="price">Supplier User Id</label>
+                            <!--<input type="text" class="form-control" id="post_name" placeholder="Supplier Id" name="supplierUid">-->
+                              <select name="supplierUid" class="form-control">
+                                  <option ng-repeat="sup in allSuppliers" value="{{sup.uId}}">{{sup.name}}</option>
+                                         </select>
+
+                          </div>
+                        <div class="form-group">
+                            <label for="price">Car Name</label>
+                            <input type="text" class="form-control" id="post_name" placeholder="Name of car" name="post_name">
+                          </div>
+                          <div class="form-group">
+                            <label>Make/Model</label>
+                            <select class="form-control select2" style="width: 100%;" 
+                              id="make"   name="make">
+                              <option  selected="selected"></option>
+                              <option value="1_Audi">Audi</option>
+                              <option value="2_BMW">BMW</option>
+                              <option value="3_Chevrolet">Chevrolet</option>
+                              <option value="4_Ford">Ford</option>
+                              <option value="5_Honda">Honda</option>
+                              <option value="6_Hyundai">Hyundai</option>
+                              <option value="7_Isuzu">Isuzu</option>
+                              <option value="8_Kia">Kia</option>
+                              <option value="9_LandRover">Land Rover</option>
+                              <option value="10_Lexus">Lexus</option>
+                              <option value="11_Mazda">Mazda</option>
+                              <option value="12_Mercedes-Benz">Mercedes-Benz</option>
+                              <option value="13_Mitsubishi">Mitsubishi</option>
+                              <option value="14_Nissan">Nissan</option>
+                              <option value="15_Subaru">Subaru</option>
+                              <option value="16_Toyota">Toyota</option>
+                              <option value="17_Volkswagen">Volkswagen</option>
+                              <option value="18_Volvo">Volvo</option>
+                              <option value="19_Jaguar">Jaguar</option>
+                            </select>
+       
+                          </div>
+                      <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..." id="post_content" name="post_content"></textarea> 
+                          </div>
+                      
+                          <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Price" name="price">
+                          </div>
+                          <div class="form-group">
+                            <label for="year">Year</label>
+                            <input type="text" class="form-control" id="year" placeholder="Year" name="year">
+                          </div>
+                          <div class="form-group">
+                            <label for="fuel">Fuel</label>
+                            <input type="text" class="form-control" id="fuel" placeholder="Fuel" name="fuel">
+                          </div>
+                          <div class="form-group">
+                            <label for="transmission">Transmission</label>
+                            <input type="text" class="form-control" id="transmission" placeholder="Transmission" name="transmission">
+                          </div>
+                          <div class="form-group">
+                            <label for="doors">Doors</label>
+                            <input type="text" class="form-control" id="doors" placeholder="Doors" name="doors">
+                          </div>
+                          <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" class="form-control" id="model" placeholder="Model" name="model">
+                          </div>
+                          <div class="form-group">
+                            <label for="bodyType">Body Type</label>
+                            <input type="text" class="form-control" id="bodyType" placeholder="Body Type" name="bodyType">
+                          </div>
+                          <div class="form-group">
+                            <label for="mileage">Mileage</label>
+                            <input type="text" class="form-control" id="mileage" placeholder="Mileage" name="mileage">
+                          </div>
+                          <div class="form-group">
+                            <label for="color">Color</label>
+                            <input type="text" class="form-control" id="color" placeholder="Color" name="color">
+                          </div>
+                          <div class="form-group">
+                            <label for="engine">Engine</label>
+                            <input type="text" class="form-control" id="engine" placeholder="Engine" name="engine">
+                          </div>     
+                  <div class="form-group">
+                      <label for="image">Image</label>
+                      <input type="file" name="imgUploader"/>
+                    </div>
+                      <div>
+                                 
+                          <input type="submit" class="btn btn-primary" name="submit" id="btnSubmit" value="Submit" />
+                      </div>
+       </div>
+    </form>
+                      </div>
+
+                     <!-- <div class="col-md-6">
+                        <div class="form-group">
+                          <label style="margin-left: 1%;">Features</label>
+                          <div class="col-md-12" style="margin-top:5px;">
+                            <select multiple="multiple" class="multi-select" id="my_multi_select0" name="my_multi_select0[]" ng-model="my_multi_select0">
+                              <option>ABS</option>
+                              <option>Bluetooth</option>
+                              <option selected>High Fuel Efficiency</option>
+                              <option selected>Bluetooth</option>
+                              <option>Navigation</option>
+                              <option>Sunroof</option>
+                              <option>4WD</option>
+                              <option>AWD</option>
+                              <option selected>Stereo System</option>
+                              <option>USB</option>
+                              <option>Leather Seats</option>
+                              <option>A/C</option>
+                              <option>Heated Seats</option>
+                              <option>Cooler</option>
+                              <option>Cup Holders</option>
+                              <option>AVS/PVS</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        
+                      </div>-->
+                        <!-- /.col -->
+                      
+                    </form>
+                  </div>
+                  <!-- /.row -->
+
+                <!-- /.box-body -->
+   
+
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+       //multiselect start
+                /*$('#my_multi_select0').multiSelect();
+                $('#my_multi_select1').multiSelect();
+                $('#my_multi_select2').multiSelect({
+                    selectableOptgroup: true
+                });*/
+    </script>

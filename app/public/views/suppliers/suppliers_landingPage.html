@@ -1,0 +1,115 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Suppliers</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="enquiriesadd">Manage Suppliers</a>
+        </li>
+    </ul>
+    
+</div>
+<h3 class="page-title">Suppliers By Category
+    <small></small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="SuppliersController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Inventory</span>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <a ui-sref="supplierscategoryadd">
+                                <button id="sample_editable_1_new" class="btn sbold green"> Add New Supplier Categories
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </a>
+                            </div>
+                            <div class="btn-group">
+                                <a ui-sref="supplierscategoryremove">
+                                <button id="sample_editable_1_new" class="btn sbold red"> Delete Supplier Categories
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group pull-right">
+                                <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;"> Print </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"> Save as PDF </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;"> Export to Excel </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="row">
+            <div class="col-md-4" ng-repeat="cat in categories">
+              <!-- Box Comment -->
+              <div class="box">
+                <div class="box-header">
+                  <div class="user-block">
+                    <span class="username" ng-click="getSuppliers(cat.id)">{{cat.category}}</span>
+                  </div>
+                  <!-- /.user-block -->
+                </div>
+                <!-- /.box-header -->
+                <a  class="hov" ng-click="getSuppliers(cat.id)">
+                  <div class="box-body">
+         
+                    <div class="tile">
+                        <div class="tile-object">
+                            <div class="name"></div>
+                            <div class="number"></div>
+                        </div>
+                    </div>
+                  </div>
+                </a>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+    TableDatatablesEditable.init();
+</script>
+<!-- END MAIN JS -->

@@ -1,0 +1,188 @@
+BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a ui-sref="suppliersview">Suppliers</a>
+            <i class="fa fa-angle-right"></i>
+
+        </li>
+        <li>
+            <a ui-sref="suppliersadd">Add Suppliers</a>
+        </li>
+    </ul>
+</div>
+<h3 class="page-title"> Add Suppliers
+    <small></small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="row" data-ng-controller="SuppliersController">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light portlet-fit bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-red"></i>
+                    <span class="caption-subject font-red sbold uppercase">Add A Supplier</span>
+                </div>
+
+            </div>
+
+            <div class="portlet-body form">
+                <form role="form"  ng-submit="addSupplier()">
+                    <div class="form-body" style="margin:15px;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Name*</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        
+                                        <input type="text" class="form-control input-circle-right" placeholder="Name" required="true" 
+                                        id="name" name="name" ng-model="name"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-car"></i>
+                                        </span>
+                                        
+                            <select class="form-control" id="type"   name="type" ng-model="type">
+                             <option ng-repeat="category in categories" value="{{category.id}}">{{category.category}}</option>
+                                           
+                                       </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Company Name" required="true"
+                                         id="companyName" name="companyName" ng-model="companyName">
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Contact Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Gigi Motor's Contact Name" required="true"
+                                         id="contactName" name="contactName" ng-model="contactName">
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Id Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="ID" required="true"
+                                         id="idNo" name="idNo" ng-model="idNo">
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Address" required="true"
+                                         id="address" name="address" ng-model="address">
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                       <!-- <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>County</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="County" required="true"
+                                         id="county" name="county" ng-model="county">
+                                         
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Phone" required="true"
+                                        id="phoneNo" name="phoneNo" ng-model="phoneNo"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Email" required="true"
+                                        id="email" name="email" ng-model="email" > 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Area/Location</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-circle-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="text" class="form-control input-circle-right" placeholder="Location" required="true"
+                                        id="location" name="location" ng-model="location" > 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Submit</button>
+                                <button type="button" class="btn default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS -->
+<script>
+</script>
+<!-- END MAIN JS
