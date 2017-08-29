@@ -51,7 +51,7 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 
 angular.module('MetronicApp')
     .factory('Main',['$http','$localStorage',function($http,$localStorage){
-        var baseUrl = "http://95.85.10.198:1337";
+       var baseUrl = "http://188.226.137.100:1337";
        //var baseUrl = "http://127.0.0.1:1337";
 
         return{
@@ -504,7 +504,7 @@ angular.module('MetronicApp')
                   if (res.type == false) {
                        alert(res)
                    } else {
-                      window.location.href = "/#/inventory_allmakes";
+                      window.location.href = "/#/inventory_reservedcars";
                        console.log(res); 
                    }
                 });
@@ -524,7 +524,7 @@ angular.module('MetronicApp')
                   if (res.type == false) {
                        alert(res)
                    } else {
-                      window.location.href = "/#/inventory_allmakes";
+                      window.location.href = "/#/inventory_collected_makes";
                        console.log(res); 
                    }
                 });
@@ -551,7 +551,7 @@ angular.module('MetronicApp')
                         }
                 Main.flagSold(formData,function(res){
                        
-                        window.location.href = "/#/inventory_allmakes";
+                        window.location.href = "/#/inventory_soldcars";
                     console.log(res);
                 });
                       console.log(formData);
@@ -801,7 +801,8 @@ angular.module('MetronicApp')
                
                 Main.addSupplier(formData,function(res){
                     console.log(res);
-                    window.location.reload();
+                   // window.location.reload();
+                   window.location.href = "/#/inventory_addCar";
                 });
                 //console.log(formData);
             }
@@ -866,6 +867,21 @@ angular.module('MetronicApp')
                 })
              }
 
+             $scope.getSupCars = function(id,name){
+                var formData = {
+                    supplierId:id,
+                };
+
+                Main.supplierInventory(formData,function(res){
+
+                     $rootScope.suppInventory = res.data;  
+                     $rootScope.suppName = name;
+                    window.location.href = "/#/supplier_manage";
+                    console.log(res);
+                })
+
+             }
+
           Main.suppliersCategory(function(res) {
                 if (res.type == false) {
                        alert(res.data)
@@ -922,6 +938,10 @@ angular.module('MetronicApp')
         }])
 
         .controller('SalespeopleController',['$rootScope','$scope','$location','Main',function($rootScope,$scope,$location,Main){
+             $scope.isObjectEmpty = function(card){
+                  return Object.keys(card).length === 0;
+                 }
+             
              $scope.addUsers = function(){
                 var formData = {
                     email: $scope.email,
@@ -944,13 +964,14 @@ angular.module('MetronicApp')
                 //console.log(formData);
             }
             $scope.tellme = ['name','self'];
-            $scope.getUserEnquiries = function(userId){
+            $scope.getUserEnquiries = function(userId,user){
               var formData = {
                  userId:userId,
               }
             
               Main.getSalesUserEnquiries(formData,function(res){
                    $rootScope.userEnquiries = res.data;
+                   $rootScope.enqUser = user;
                     window.location.href = "/#/salespeople_manage";
                     console.log(res.data);
                   

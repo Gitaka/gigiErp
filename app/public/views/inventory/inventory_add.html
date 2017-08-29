@@ -47,7 +47,8 @@
     <form id="frmUploader" enctype="multipart/form-data" action="inventory" method="post">
        <div class="col-md-6">
                         <div class="form-group">
-                          <label for="price">Choose Supplier</label>
+                          <label for="price">Choose Supplier</label><br>
+                           <label style="color:red;font-size:10px">If Supplier is not available from the drop down menu.Please add them on the list first,by clicking on the Add Supplier button on the top right.</label>
                              <select name="supplier" id="supplier" ng-model="supplier" class="form-control">
                                   <option value="0">Gigi Motors</option>
                                   <option ng-repeat="supplier in allSuppliers" value="{{supplier.id}}">{{supplier.name}}</option>

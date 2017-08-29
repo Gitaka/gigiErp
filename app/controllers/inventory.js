@@ -9,7 +9,8 @@ var path = require('path');
     pool = mysql.createPool({
     	host : 'localhost',
     	user : 'root',
-    	password : 'skye2016',
+      password : 'gigierp',
+    	//password : '',
     	database : 'ninja',
     }); 
 
@@ -512,7 +513,7 @@ exports.reserve = function(req,res,next){
       created_at = dateTime.create().format('Y-m-d H:M:S');
 
       queryStringData = [carId,userId,deposit,comment,dueDate,customerName,customerPhone,created_at];
-      queryString = "INSERT INTO reservedCars (carId,userId,deposit,comment,dueDate,customerName,customerPhoneNo,created_at) VALUES (?,?,?,?,?,?,?,?)";
+      queryString = "INSERT INTO reservedcars (carId,userId,deposit,comment,dueDate,customerName,customerPhoneNo,created_at) VALUES (?,?,?,?,?,?,?,?)";
           
       pool.query(queryString,queryStringData,function(err,response){
         if(err){
@@ -621,7 +622,7 @@ exports.returnedToSupplier = function(req,res,next){
        created_at = dateTime.create().format('Y-m-d H:M:S');
       
       queryStringData = [userId,carId,comment,status,created_at];
-      queryString =  "INSERT INTO returnedCars (userId,carId,comment,status,created_at) VALUES (?,?,?,?,?)";
+      queryString =  "INSERT INTO returnedcars (userId,carId,comment,status,created_at) VALUES (?,?,?,?,?)";
       pool.query(queryString,queryStringData,function(err,response){
         if(err){
           console.log("Flagging car as returned to supplier failed" + err);

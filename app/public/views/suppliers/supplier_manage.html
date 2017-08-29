@@ -16,7 +16,7 @@
     </ul>
     
 </div>
-<h3 class="page-title">{{suppName}}'s' Inventory
+<h3 class="page-title " style="text-align:center">{{suppName}}'s' Inventory
     <small>All  cars</small>
 </h3>
 
@@ -56,13 +56,13 @@
          <ul style="list-style: none">
          <div class="btn-group" style="padding-top:2%;">
                             <a ui-sref="#">
-                                <button id="sample_editable_1_new" class="btn sbold red"> All Cars
+                                <button id="sample_editable_1_new" class="btn sbold red"> All Suppliers
                                 </button>
                             </a>
                             </div>
 
-           <li style="padding:5px;color:#2b3643" ng-repeat="make in makes" ng-click="getMakeess(make.id,make.make)">
-           <a href="#" style="text-decoration: none">{{make.make}}</a></li>
+           <li style="padding:5px;color:#2b3643" ng-repeat="make in allSuppliers" ng-click="getSupCars(make.id,make.name)">
+           <a href="#" style="text-decoration: none">{{make.name}}</a></li>
          </ul>
 
       </div>

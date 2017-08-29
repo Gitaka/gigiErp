@@ -2,14 +2,18 @@ var mysql = require('mysql');
     bcrypt = require('bcrypt-nodejs');
     dateTime = require('node-datetime');
     jwt = require('jsonwebtoken');
+    multer = require('multer');
 
     pool = mysql.createPool({
       host : 'localhost',
       user : 'root',
-      password : 'skye2016',
+      //password : '',
+      password : 'gigierp',
       database : 'ninja',
       
     });
+
+var baseDir = __dirname.substring(0,__dirname.length - 11)+'public'+"/"+'salespersons'; 
 
 exports.getUsers = function(req,res){
   var queryString = "SELECT * FROM salespersons ORDER BY id DESC";
@@ -54,14 +58,44 @@ exports.getUser = function(req,res){
 }
 
 exports.registerUser = function(req,res){
+
+
+    var storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+        cb(null,baseDir)
+      },
+      filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-'+Date.now()+'-'+ file.originalname)
+      }
+    });
+
+    var upload = multer({storage: storage}).array('imgUploader',1);
+        upload(req,res,function(err){
+                  if(err){
+                    return res.send({
+                        'message':'something went wrong',
+                        'err':err,
+
+                    });
+                }
+
+     
+                var imageFiles = req.files;
+                var imgUrl="";
+                for(var i in imageFiles){
+                    imgUrl = imageFiles[i].filename;
+
+                }
+
+//insert data into db
   var username = req.body.name;
       password = req.body.password;
       email = req.body.email;
       location = req.body.location;
       phoneNo = req.body.phoneNo;
       idNo = req.body.idNo;
-      user_role = req.body.user_role;
-      employeeId = req.body.employeeId;
+      user_role = req.body.role;
+      employeeId = req.body.empId;
       manager = req.body.manager;
       dob = req.body.dob;
       hireDate = req.body.hireDate;
@@ -77,20 +111,22 @@ exports.registerUser = function(req,res){
   };
   
   var token = jwt.sign(data,process.env.JWT_SECRET);
-      queryStringData = [username,idNo,employeeId,manager,dob,hireDate,email,phoneNo,location,hash,user_role,token];
-      queryString = "INSERT INTO salespersons(username,idno,employeeId,manager,dob,hireDate,email,phoneNo,location,password,user_role,token) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+      queryStringData = [username,idNo,employeeId,manager,dob,hireDate,email,phoneNo,location,hash,user_role,token,imgUrl];
+      queryString = "INSERT INTO salespersons(username,idno,employeeId,manager,dob,hireDate,email,phoneNo,location,password,user_role,token,photo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-      pool.query(queryString,queryStringData,function(err,result){
+     pool.query(queryString,queryStringData,function(err,result){
         if(err)
           console.log(err);
 
-        res.send({
-          'error':false,
-          'message':'User registered',
-        });
+
+        res.redirect('/#/salespeople_view');
         
 
   });
+
+
+
+        });
      
 
 }
@@ -144,7 +180,7 @@ exports.adminSignin = function(req,res){
 
   var upload = multer().array();
     
-  var queryString = "SELECT * FROM adminUser WHERE email='"+email+"'"; 
+  var queryString = "SELECT * FROM adminuser WHERE email='"+email+"'"; 
 
 
       pool.query(queryString,function(err,rows){

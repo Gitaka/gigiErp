@@ -34,7 +34,7 @@
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form role="form" class="form-horizontal" ng-submit="addUsers()">
+                <form role="form" class="form-horizontal" action="users" method="post" enctype="multipart/form-data">
                             <div class="form-body">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Name</label>
@@ -104,7 +104,7 @@
                                             <input type="text" class="form-control input-circle-right" placeholder="Hire Date" required 
                                             id="hireDate" name="hireDate" ng-model="hireDate"> </div>
                                     </div>
-                                </div>                      
+                                </div>                   
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Email Address</label>
                                     <div class="col-md-4">
@@ -167,6 +167,16 @@
                                         </div>
                                     </div>
                                 </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="image">SalesPerson's Image</label>
+                                   <div class="col-md-4">
+                                        <div class="input-group">
+                                           <input type="file" name="imgUploader"/>
+
+                                        </div>
+                                    </div>
+                               
+                           </div>
                             </div>
                             <div class="form-actions">
                                 <div class="row">

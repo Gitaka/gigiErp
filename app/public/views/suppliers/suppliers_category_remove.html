@@ -32,12 +32,12 @@ BEGIN PAGE HEADER-->
                 </div>
 
             </div>
-
+ 
             <div class="portlet-body form">
                 <form role="form"  ng-submit="removeSupplierCategory()">
                     <div class="form-body" style="margin:15px;">
                         <div class="row">
-
+                            
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Choose Category To Delete</label>
@@ -46,7 +46,7 @@ BEGIN PAGE HEADER-->
                                             <i class="fa fa-envelope"></i>
                                         </span>
                                     <select name="category" ng-model="category" class="form-control">
-                                          <option ng-repeat="supplier in allSuppliers" value="{{supplier.id}}">{{cat.}}</option>
+                                          <option ng-repeat="cat in categories " value="{{cat.id}}">{{cat.category}}</option>
                                          </select> 
                                     </div>
                                 </div>

@@ -7,7 +7,7 @@ angular.module('MetronicApp').controller('DashboardController', function($rootSc
 
     
     //var baseUrl = "http://127.0.0.1:1337";
-    var baseUrl = "http://95.85.10.198:1337";
+    var baseUrl = "http://188.226.137.100:1337";
     $http.get(baseUrl + '/inventoryCount').then(function(response){ 
     	$scope.invCount = response.data.data; 
     	 console.log(response.data.data);

@@ -7,13 +7,14 @@ var mysql = require('mysql');
     pool = mysql.createPool({
       host : 'localhost',
       user : 'root',
-      password : 'skye2016',
+      password : 'gigierp',
+     // password : 'skye2016',
       database : 'ninja',
     });
 
 
 exports.getEnquiries = function(req,res){
-	var  queryString = "SELECT enquiries.id,enquiries.title,enquiries.enquiry,enquiries.car_model,enquiries.amount,enquiries.status,enquiries.date,contacts.first_name,contacts.last_name,contacts.email,contacts.phone,salespersons.username,salespersons.phoneNo,salespersons.location FROM enquiries,contacts,salespersons WHERE  enquiries.customer_id = contacts.id AND  enquiries.user_id=salespersons.id";
+	var  queryString = "SELECT enquiries.id,enquiries.title,enquiries.enquiry,enquiries.car_model,enquiries.amount,enquiries.status,enquiries.date,contacts.first_name,contacts.last_name,contacts.email,contacts.phone,salespersons.username,salespersons.phoneNo,salespersons.location FROM enquiries,contacts,salespersons WHERE  enquiries.customer_id = contacts.id AND  enquiries.user_id=salespersons.id ORDER BY id DESC";
 	    pool.query(queryString,function(err,result){
 	    	if(err){
 	    		res.send({
